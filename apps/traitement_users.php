@@ -31,7 +31,7 @@ if(isset($_POST['pseudo']) && isset($_GET['page']) && $_GET['page']=='login')
 if(isset($_SESSION['id'], $_GET['page']) && $_GET['page']=='logout')
 {
 	$user = $user_manager->getById($_SESSION['id']);
-	$user = $user->setStatut(0);
+	$user->setStatut(0);
 	$user_manager->update($user);
 	session_destroy();
 	header('location:index.php?page=affichage');
