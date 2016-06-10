@@ -2,10 +2,11 @@
 class Message
 {
 	private $id;
-	private $author;
+	private $id_author;
 	private $content;
 	private $date;
 
+	private $author;
 	private $link;
 
 	public function __construct($link)
@@ -18,8 +19,18 @@ class Message
 		return $this->id;
 	}
 
+	public function getIdAuthor()
+	{
+		return $this->id_author;
+	}
+
 	public function getAuthor()
 	{
+		if ($this->author === null)
+		{
+			$manager = new UserManager($link);
+			$this->author = $manager->getById($this->id_author);
+		}
 		return $this->author;
 	}
 
@@ -33,18 +44,10 @@ class Message
 		return $this->content;
 	}
 
-	public function setAuthor($author)
+	public function setAuthor(User $author)
 	{
-		if (strlen($author)<2)
-		{
-			throw new Exception("Nom trop court (<2)");
-		}
-
-		else if (strlen($author)>15)
-		{
-			throw new Exception("Nom trop long (>15)");
-		}
-		$this->author=$author;
+		$this->id_author = $author->getId();
+		$this->author = $author;
 	}
 
 	public function setContent($content)
