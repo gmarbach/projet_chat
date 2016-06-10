@@ -28,9 +28,9 @@ class MessageManager
 
 	public function create($data)
 	{
-		$message=new Message($this->link)
-		{
-			if(!isset($data['auteur']))
+		$message=new Message($this->link);
+		
+			if(!isset($data['author']))
 			{
 				throw new Exception("Paramètre manquant: auteur");
 			}
@@ -64,9 +64,9 @@ class MessageManager
 			}
 			else
 			{
-				throw new Exception("Erreur Intern");				
+				throw new Exception("Erreur Interne");				
 			}
-		}
+		
 	}
 }
 ?>
