@@ -19,7 +19,7 @@ if (isset($_GET['page']))
 		$page = $_GET['page'];
 }
 $acces_traitement = array('affichage'=>'messages');
-if (array_key_exists(($page, $acces_traitement)))
+if (array_key_exists($page, $acces_traitement))
 	require('apps/traitement_'.$acces_traitement[$page].'.php');
 if (isset($_GET['ajax']))
 {

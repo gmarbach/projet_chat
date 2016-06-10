@@ -1,0 +1,49 @@
+*{
+	box-sizing: border-box;
+}
+
+.menu_res_sociaux{
+	margin: 0;
+	padding: 0;
+}
+
+.menu_res{
+	width: 800px;
+	margin: 0 auto;
+}
+
+.res_sociaux{
+	text-align: center;
+	margin: 20px 0 0;
+	padding: 0;
+}
+
+.res_sociaux li{
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 5px;
+}
+
+.sprite{
+	background-image: url(../images/sprite.png);
+	display: inline-block;
+	width: 46px;
+	height: 46px;
+	transition: all .5s ease-in;
+}
+
+.sprite.ico-facebook{
+	background-position: 0 0;
+}
+
+.sprite.ico-twitter{
+	background-position: -52px 0;
+}
+
+.sprite.ico-facebook:hover{
+	background-position: 0 -47px;
+}
+
+.sprite.ico-twitter:hover{
+	background-position: -52px -47px;
+}
