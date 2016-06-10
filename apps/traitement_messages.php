@@ -1,8 +1,8 @@
 <?php
 $message_manager=new MessageManager($link);
-if ($_POST['content']))
+if (isset($_POST['content']))
 {
-	if (isset($_SESSION['id'])
+	if (isset($_SESSION['id']))
 	{
 		try
 		{
