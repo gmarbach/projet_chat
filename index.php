@@ -21,10 +21,12 @@ if (isset($_GET['page']))
 $acces_traitement = array('affichage'=>'messages','login'=>'users','logout'=>'users');
 if (array_key_exists($page, $acces_traitement))
 	require('apps/traitement_'.$acces_traitement[$page].'.php');
+	exit;
 if (isset($_GET['ajax']))
 {
 	$access_ajax = [];
 	require('apps/'.$pageAjax.'.php');
+	exit;
 }
 else
 	require('apps/skel.php');
