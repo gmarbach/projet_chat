@@ -34,7 +34,7 @@ class MessageManager
 			throw new Exception("Paramètre manquant:contenu");
 		}
 		$message->setContent($data['content']);
-		$message->setAuthor($author);
+		$message->setAuthor($user);
 
 		$id_author=mysqli_real_escape_string($this->link,$message->getAuthor()->getId());
 		$content=mysqli_real_escape_string($this->link,$message->getContent());

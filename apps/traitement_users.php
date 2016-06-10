@@ -10,16 +10,17 @@ if(isset($_POST['pseudo']) && isset($_GET['page']) && $_GET['page']=='login')
 		{
 			$user->setStatut(1);
 			$user=$user_manager->update($user);
-			header('location:index.php?page=affichage');
-			exit;
+			
 		}
+
 		else 
 		{
 			$user=$user_manager->create($_POST);
-			header('location:index.php?page=affichage');
-			exit;
+			
 		}
-
+		$_SESSION['id']=$user->getId();
+		header('location:index.php?page=affichage');
+		exit;
 	}
 	catch (Exception $e)
 	{

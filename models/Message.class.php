@@ -28,7 +28,7 @@ class Message
 	{
 		if ($this->author === null)
 		{
-			$manager = new UserManager($link);
+			$manager = new UserManager($this->link);
 			$this->author = $manager->getById($this->id_author);
 		}
 		return $this->author;

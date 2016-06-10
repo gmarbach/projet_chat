@@ -28,7 +28,7 @@ class UserManager
 
 	public function getByPseudo($pseudo)
 	{
-		$query="SELECT * FROM users WHERE pseudo=".$pseudo;
+		$query="SELECT * FROM users WHERE pseudo='".$pseudo."'";
 		$res=mysqli_query($this->link,$query);
 		$user=mysqli_fetch_object($res,"User",[$this->link]);
 		return $user;
