@@ -26,46 +26,39 @@ class MessageManager
 		return $list;
 	}
 
-	public function create($data)
+	public function create($data, User $user)
 	{
 		$message=new Message($this->link);
-		
-			if(!isset($data['author']))
+		if (!isset($data['content']))
+		{
+			throw new Exception("Paramètre manquant:contenu");
+		}
+		$message->setContent($data['content']);
+		$message->setAuthor($author);
+
+		$id_author=mysqli_real_escape_string($this->link,$message->getAuthor()->getId());
+		$content=mysqli_real_escape_string($this->link,$message->getContent());
+
+		$query="INSERT INTO messages(id_author,content) VALUES ('".$id_author."','".$content."')";
+		$res=mysqli_query($this->link,$query);
+
+		if($res)
+		{
+			$id=mysqli_insert_id($this->link);
+			if($id)
 			{
-				throw new Exception("Paramètre manquant: auteur");
-			}
-
-			if (!isset($data['content']))
-			{
-				throw new Exception("Paramètre manquant:contenu");
-				
-			}
-			$message->setContent($data['content']);
-			$message->setAuthor($data['author']);
-
-			$author=mysqli_real_escape_string($this->link,$message->getAuthor());
-			$content=mysqli_real_escape_string($this->link,$message->getContent());
-
-			$query="INSERT INTO messages(author,content) VALUES ('".$author."','".$content."')";
-			$res=mysqli_query($this->link,$query);
-
-			if($res)
-			{
-				$id=mysqli_insert_id($this->link);
-				if($id)
-				{
-					$message=$this->getById($id);
-					return $message;
-				}
-				else
-				{
-					throw new Exception("Erreur Interne");
-				}
+				$message=$this->getById($id);
+				return $message;
 			}
 			else
 			{
-				throw new Exception("Erreur Interne");				
+				throw new Exception("Erreur Interne");
 			}
+		}
+		else
+		{
+			throw new Exception("Erreur Interne");				
+		}
 		
 	}
 }

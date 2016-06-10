@@ -1,5 +1,5 @@
 <li class="message">
-	<div class="author"><?=htmlentities($message->getAuthor())?></div>
+	<div class="author"><?=htmlentities($message->getAuthor()->getPseudo())?></div>
 	<div class="date"><?=htmlentities(date('d/m/Y h:i:s', strtotime($message->getDate())))?></div>
 	<div class="content"><?=htmlentities($message->getContent())?></div>
 </li>

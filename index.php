@@ -12,13 +12,13 @@ if (!$link)
 	require('bigerror.phtml');
 	exit;
 }
-$acces = array('affichage');
+$acces = array('affichage','login','logout');
 if (isset($_GET['page']))
 {
 	if (in_array($_GET['page'], $acces))
 		$page = $_GET['page'];
 }
-$acces_traitement = array('affichage'=>'messages');
+$acces_traitement = array('affichage'=>'messages','login'=>'users','logout'=>'users');
 if (array_key_exists($page, $acces_traitement))
 	require('apps/traitement_'.$acces_traitement[$page].'.php');
 if (isset($_GET['ajax']))
