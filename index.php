@@ -23,8 +23,12 @@ if (array_key_exists($page, $acces_traitement))
 	require('apps/traitement_'.$acces_traitement[$page].'.php');
 if (isset($_GET['ajax']))
 {
-	$access_ajax = [];
-	require('apps/'.$pageAjax.'.php');
+	$access_ajax = ['ls_messages'];
+	if (in_array($_GET['page'], $access_ajax))
+	{
+		$pageAjax = $_GET['page'];
+		require('apps/'.$pageAjax.'.php');
+	}
 }
 else
 	require('apps/skel.php');
