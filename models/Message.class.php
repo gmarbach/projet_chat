@@ -10,7 +10,7 @@ class Message
 
 	public function __construct($link)
 	{
-		$this->link=$link
+		$this->link=$link;
 	}
 
 	public function getId()

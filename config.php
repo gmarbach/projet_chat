@@ -3,6 +3,6 @@
 $localhost = 'localhost';
 $login = 'root';
 $pass = 'troiswa';
-$database = 'projet_reve';
+$database = 'projet_chat';
 
 ?>

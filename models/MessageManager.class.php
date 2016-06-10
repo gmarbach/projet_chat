@@ -12,7 +12,7 @@ class MessageManager
 		$id=intval($id);
 		$query="SELECT * FROM messages WHERE id=".$id;
 		$res=mysqli_query($this->link,$query);
-		$message=mysqli_fetch_object($res,"Message",[$this->linl]);
+		$message=mysqli_fetch_object($res,"Message",[$this->link]);
 		return $message;
 	}
 
@@ -21,7 +21,7 @@ class MessageManager
 		$query = "SELECT * FROM messages";
 		$res = mysqli_query($this->link, $query);
 		$list = [];
-		while ($messages = mysqli_fetch_object($res, "Messages", [$this->link]))
+		while ($messages = mysqli_fetch_object($res, "Message", [$this->link]))
 			$list[] = $messages;
 		return $list;
 	}
